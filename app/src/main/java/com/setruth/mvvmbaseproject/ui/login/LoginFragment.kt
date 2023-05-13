@@ -14,7 +14,6 @@ import com.setruth.mvvmbaseproject.util.LogUtil
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.withContext
-import kotlin.math.log
 
 /**
  * @Author: Setruth
@@ -53,13 +52,13 @@ class LoginFragment : BaseFragment<FragmentLoginLayoutBinding, LoginFragmentView
                         ApiResponse.Loading -> LogUtil.e("Loading")
                         is ApiResponse.Success -> {
                             LogUtil.e("${it.data.toString()}")
-                           withContext(Dispatchers.Main){
-                               findNavController().navigate(
-                                   R.id.mainNavigationFragment,
-                                   null,
-                                   NavOptions.Builder().setPopUpTo(R.id.loginFragment, true).build()
-                               )
-                           }
+                            withContext(Dispatchers.Main){
+                                findNavController().navigate(
+                                    R.id.mainNavigationFragment,
+                                    null,
+                                    NavOptions.Builder().setPopUpTo(R.id.loginFragment, true).build()
+                                )
+                            }
                         }
                     }
                 }
