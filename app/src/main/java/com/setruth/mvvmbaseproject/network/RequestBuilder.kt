@@ -18,6 +18,7 @@ import java.util.concurrent.TimeUnit
 
 class RequestBuilder(context: Context) {
     private var retrofitBuilder: Retrofit
+
     init {
         OkHttpClient.Builder()
             .cookieJar(PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(context)))
@@ -33,6 +34,7 @@ class RequestBuilder(context: Context) {
                     .build()
             }
     }
+
     /**
      * TODO 获取APi接口的实体请求类
      *
@@ -53,15 +55,17 @@ class RequestBuilder(context: Context) {
         flow {
             emit(ApiResponse.Loading)
             try {
-                val response = requestFun()
-                if (response.isSuccessful && response.body() != null) {
-                    if (response.body()!=null) {
-                        emit(ApiResponse.Success(response.body()!!))
+                with(requestFun()) {
+                    if (isSuccessful) {
+                        if (body() != null) ApiResponse.Success(body()!!) else ApiResponse.Error(
+                            Exception("失败"),
+                            "服务器异常"
+                        )
                     } else {
-                        emit(ApiResponse.Error(Exception("失败"), "服务器异常"))
+                        ApiResponse.Error(Exception("${code()}"), "")
+                    }.let {
+                        emit(it)
                     }
-                } else {
-                    emit(ApiResponse.Error(Exception("${response.code()}"), ""))
                 }
             } catch (e: Exception) {
                 emit(ApiResponse.Error(e, "网络请求失败"))
