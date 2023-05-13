@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation_view_navigation"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.setruth.mvvmbaseproject.ui.mainnavigation.home.HomeFragment"
+        android:label="HomeFragment" />
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.setruth.mvvmbaseproject.ui.mainnavigation.user.UserFragment"
+        android:label="UserFragment" />
+</navigation>

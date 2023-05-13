@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.setruth.mvvmbaseproject.ui.login.LoginFragment"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.setruth.mvvmbaseproject.ui.login.LoginFragmentViewModel" />
+    </data>
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/login_background"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="50dp"
+                app:cardCornerRadius="@dimen/big_card_radius"
+                app:cardElevation="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:background="@drawable/login_head_background"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="登录"
+                            android:textColor="@color/white"
+                            android:textSize="30sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginVertical="10dp"
+                        android:gravity="center|top"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="@dimen/big_card_padding"
+                        android:paddingBottom="@dimen/common_card_padding">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/common_card_item_margin"
+                            android:background="@color/white"
+                            android:hint="登录账号"
+                            android:textColorHint="@color/tip_color"
+                            app:boxStrokeColor="@color/main_color"
+                            app:boxStrokeWidth="1dp"
+                            app:hintAnimationEnabled="true"
+                            app:hintTextAppearance="@style/HintTextAppearance"
+                            app:hintTextColor="@color/main_color">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:text="@={viewModel.loginAccount}"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:backgroundTint="@color/white"
+                                android:drawableStart="@drawable/account_icon"
+                                android:inputType="text"
+                                android:textColor="@color/card_text_color"
+                                android:textSize="@dimen/common_text_size" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/common_card_item_margin"
+                            android:background="@color/white"
+                            android:hint="登录密码"
+                            android:textColorHint="@color/tip_color"
+                            app:boxStrokeColor="@color/main_color"
+                            app:boxStrokeWidth="1dp"
+                            app:hintTextAppearance="@style/HintTextAppearance"
+                            app:hintTextColor="@color/main_color"
+                            app:passwordToggleEnabled="true">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:text="@={viewModel.loginPassword}"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:backgroundTint="@color/white"
+                                android:drawableStart="@drawable/password_icon"
+                                android:inputType="textPassword"
+                                android:textColor="@color/card_text_color"
+                                android:textSize="@dimen/common_text_size" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <CheckBox
+                                android:checked="@={viewModel.autoLoginState}"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="自动登录"
+                                android:textColor="@color/pass_color"
+                                android:textSize="@dimen/common_text_size" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+
+                            <CheckBox
+                                android:checked="@={viewModel.rememberPasswordState}"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="记住密码"
+                                android:textColor="@color/main_color"
+                                android:textSize="@dimen/common_text_size" />
+                        </LinearLayout>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/login_btn"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="登录"
+                            android:textSize="@dimen/common_text_size" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="点击登录代表您已同意"
+                                android:textSize="@dimen/tip_text_size" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="用户协议"
+                                android:textColor="@color/main_color"
+                                android:textSize="@dimen/tip_text_size" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="和"
+                                android:textSize="@dimen/tip_text_size" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="隐私政策"
+                                android:textColor="@color/main_color"
+                                android:textSize="@dimen/tip_text_size" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_margin="@dimen/common_card_item_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="技术支持:xxxxxxxx"
+                android:textColor="@color/white"
+                android:textSize="@dimen/tip_text_size" />
+
+            <TextView
+                android:ellipsize="end"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="版权所有:xxxxxxxx"
+                android:textColor="@color/white"
+                android:textSize="@dimen/tip_text_size" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

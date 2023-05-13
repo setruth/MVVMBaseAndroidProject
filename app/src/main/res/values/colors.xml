@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="main_color">#42A5F5</color>
+    <color name="second_color">#E57373</color>
+    <color name="card_text_color">#666666</color>
+    <color name="tip_color">#C1C1C1</color>
+    <color name="pass_color">#26A69A</color>
+</resources>

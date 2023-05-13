@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="logo_title_text_size">16sp</dimen>
+    <dimen name="common_text_size">13sp</dimen>
+    <dimen name="tip_text_size">9sp</dimen>
+    <dimen name="card_text_size">11dp</dimen>
+    <dimen name="dialog_horizontal_margin">10dp</dimen>
+    <dimen name="spinner_marginVertical">10dp</dimen>
+    //角度
+    <dimen name="common_card_radius">10dp</dimen>
+    <dimen name="big_card_radius">15dp</dimen>
+    //内外边距
+    <dimen name="common_card_padding">10dp</dimen>
+    <dimen name="common_card_item_margin">15dp</dimen>
+    <dimen name="big_card_padding">15dp</dimen>
+</resources>
