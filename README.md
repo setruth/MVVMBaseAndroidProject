@@ -45,9 +45,9 @@
 >
 >````kotlin
 >sealed class ApiResponse<out T> {
->data class Success<out T>(val data: T?) : ApiResponse<T>()
->data class Error(val exception: Exception, val errMsg: String) : ApiResponse<Nothing>()
->object Loading : ApiResponse<Nothing>()
+>   data class Success<out T>(val data: T?) : ApiResponse<T>()
+>   data class Error(val exception: Exception, val errMsg: String) : ApiResponse<Nothing>()
+>   object Loading : ApiResponse<Nothing>()
 >}
 >````
 >
@@ -55,9 +55,9 @@
 >
 >````kotlin
 >when (status) {
->is ApiResponse.Error -> LogUtil.e("${it.errMsg} ${it.errMsg}")
->ApiResponse.Loading -> LogUtil.e("Loading")
->is ApiResponse.Success -> LogUtil.e("${it.data.toString()}")
+>   is ApiResponse.Error -> LogUtil.e("${it.errMsg} ${it.errMsg}")
+>   ApiResponse.Loading -> LogUtil.e("Loading")
+>   is ApiResponse.Success -> LogUtil.e("${it.data.toString()}")
 >}
 >````
 >
@@ -69,7 +69,7 @@
 >> 因为网络请求工具是直接一次性实例化在PublicViewModel中进行调用的，所有的网络请求都应该在这里进行调用而不是直接去构建RequestBuidler对象来发起网络请求，在PublicViewModel的getResponse中开启协程发起网络请求实现网络请求异步的操作，然后上一层RequestBuidler中的getResponse会提交网络的请求状态然后在PublicViewModel的getResponse中获取到上层的提交后把flow传入getResponse的process中，在最外层调用的地方通过获取flow进行订阅来对网络请求的每步进行响应操作(最外层操作flow是在协程中，所以如果要进行UI或者主线程操作请withContext(Dispatchers.Main)切换到主线程进行操作)
 >> ```kotlin
 >> //PublicViewModel的getResponse
->> >> fun <T> Call<T>.getResponse(process: suspend (flow: Flow<ApiResponse<T>>) -> Unit) {
+>>  fun <T> Call<T>.getResponse(process: suspend (flow: Flow<ApiResponse<T>>) -> Unit) {
 >>  viewModelScope.launch(Dispatchers.IO) {
 >>      requestBuilder.apply {
 >>          process(requestBuilder.getResponse {
@@ -82,7 +82,7 @@
 >> #### 订阅处理：
 >> 最外层的请求通过获取flow来进行when判断当前网络请求状态来达到管理网络请求整个流程的实现
 >> ```kotlin
->>>> request(TestAPI::class.java).login().getResponse {
+>> request(TestAPI::class.java).login().getResponse {
 >>     it.collect{
 >>         when (it) {
 >>             is ApiResponse.Error -> LogUtil.e("${it.errMsg} ${it.errMsg}")
