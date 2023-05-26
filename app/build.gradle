@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -37,6 +38,12 @@ android {
 }
 
 dependencies {
+    var room_version = "2.5.1"
+    //room框架
+    implementation 'androidx.room:room-runtime:2.4.2'
+    implementation "androidx.room:room-ktx:2.4.2"
+    // To use Kotlin annotation processing tool (kapt)
+    kapt("androidx.room:room-compiler:$room_version")
     var nav_version = "2.5.3"
     //下拉刷新部分
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/app_navigation"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/fragmentDBTest">
 
     <fragment
         android:id="@+id/mainNavigationFragment"
@@ -26,4 +26,8 @@
         android:id="@+id/fragment2"
         android:name="com.setruth.mvvmbaseproject.ui.fragment2.Fragment2"
         android:label="Fragment2" />
+    <fragment
+        android:id="@+id/fragmentDBTest"
+        android:name="com.setruth.mvvmbaseproject.ui.dbtest.FragmentDBTest"
+        android:label="FragmentDBTest" />
 </navigation>
